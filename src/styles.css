@@ -34,3 +34,7 @@ header {
   border-color: black;
   background-color: aqua;
 }
+
+footer > p {
+  text-align: center;
+}
