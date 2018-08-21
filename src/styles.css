@@ -34,3 +34,8 @@ header {
   border-color: black;
   background-color: aqua;
 }
+
+h2,
+p {
+  text-align: center;
+}
