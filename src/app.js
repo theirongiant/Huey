@@ -114,6 +114,7 @@ class App extends Component {
           })}
         </section>
         <p>{this.outputRainbow(postRainbow)}</p>
+
       </Fragment>
     );
   }
