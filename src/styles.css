@@ -35,6 +35,7 @@ header {
   background-color: aqua;
 }
 
-footer > p {
+h2,
+p {
   text-align: center;
 }

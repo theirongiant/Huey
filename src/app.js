@@ -30,6 +30,9 @@ class App extends Component {
 
   render() {
     const { lastGoodHSL } = this.state;
+    const mainRainbow = this.generateRainbow(lastGoodHSL);
+    const preRainbow = this.generateRainbow(lastGoodHSL, -15);
+    const postRainbow = this.generateRainbow(lastGoodHSL, 15);
     return (
       <Fragment>
         <header>
@@ -65,55 +68,53 @@ class App extends Component {
           </div>
           <div />
         </section>
+        <hr />
+
+        <h2> Rainbow </h2>
+        <section className="container">
+          {Object.entries(mainRainbow).map(([color, rgb]) => {
+            return (
+              <div
+                key={color}
+                className="color-box"
+                style={{ backgroundColor: `#${rgb}` }}
+              />
+            );
+          })}
+        </section>
+        <p>{this.outputRainbow(mainRainbow)}</p>
+        <hr />
+
+        <h2> Lighter Hues </h2>
 
         <section className="container">
-          {Object.entries(this.generateRainbow(lastGoodHSL, 15)).map(
-            ([color, rgb]) => {
-              return (
-                <div
-                  key={color}
-                  className="color-box"
-                  style={{ backgroundColor: `#${rgb}` }}
-                />
-              );
-            }
-          )}
+          {Object.entries(preRainbow).map(([color, rgb]) => {
+            return (
+              <div
+                key={color}
+                className="color-box"
+                style={{ backgroundColor: `#${rgb}` }}
+              />
+            );
+          })}
         </section>
 
+        <p>{this.outputRainbow(preRainbow)}</p>
+        <hr />
+        <h2> Darker Hues </h2>
         <section className="container">
-          {Object.entries(this.generateRainbow(lastGoodHSL)).map(
-            ([color, rgb]) => {
-              return (
-                <div
-                  key={color}
-                  className="color-box"
-                  style={{ backgroundColor: `#${rgb}` }}
-                />
-              );
-            }
-          )}
+          {Object.entries(postRainbow).map(([color, rgb]) => {
+            return (
+              <div
+                key={color}
+                className="color-box"
+                style={{ backgroundColor: `#${rgb}` }}
+              />
+            );
+          })}
         </section>
+        <p>{this.outputRainbow(postRainbow)}</p>
 
-        <section className="container">
-          {Object.entries(this.generateRainbow(lastGoodHSL, -15)).map(
-            ([color, rgb]) => {
-              return (
-                <div
-                  key={color}
-                  className="color-box"
-                  style={{ backgroundColor: `#${rgb}` }}
-                />
-              );
-            }
-          )}
-        </section>
-
-        <footer>
-          <p>
-            The center line is the basic rainbow colors keyed, the lines before
-            and after have the hue moved by 15 in either direction
-          </p>
-        </footer>
       </Fragment>
     );
   }
@@ -151,6 +152,12 @@ class App extends Component {
       );
       return obj;
     }, {});
+  }
+
+  outputRainbow(rainbow) {
+    return `[${Object.values(rainbow)
+      .map(rgb => `'#${rgb}'`)
+      .join(", ")}]`;
   }
 }
 
