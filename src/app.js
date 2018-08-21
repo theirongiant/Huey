@@ -19,8 +19,8 @@ class App extends Component {
     super();
 
     this.state = {
-      lastGood: startColor,
-      lastGoodHSL: convert.hex.hsl(startColor),
+      lastGood: startColor.replace("#", ""),
+      lastGoodHSL: convert.hex.hsl(startColor.replace("#", "")),
       baseColor: startColor,
       validColor: true
     };
@@ -31,8 +31,8 @@ class App extends Component {
   render() {
     const { lastGoodHSL } = this.state;
     const mainRainbow = this.generateRainbow(lastGoodHSL);
-    const preRainbow = this.generateRainbow(lastGoodHSL, -15);
-    const postRainbow = this.generateRainbow(lastGoodHSL, 15);
+    const lessRainbow = this.generateRainbow(lastGoodHSL, -15);
+    const moreRainbow = this.generateRainbow(lastGoodHSL, 15);
     return (
       <Fragment>
         <header>
@@ -48,7 +48,7 @@ class App extends Component {
             <div
               className="color-box"
               style={{
-                backgroundColor: this.state.lastGood,
+                backgroundColor: "#" + this.state.lastGood,
                 margin: "5px auto"
               }}
             />
@@ -85,10 +85,10 @@ class App extends Component {
         <p>{this.outputRainbow(mainRainbow)}</p>
         <hr />
 
-        <h2> Lighter Hues </h2>
+        <h2> Less Huey </h2>
 
         <section className="container">
-          {Object.entries(preRainbow).map(([color, rgb]) => {
+          {Object.entries(lessRainbow).map(([color, rgb]) => {
             return (
               <div
                 key={color}
@@ -99,11 +99,11 @@ class App extends Component {
           })}
         </section>
 
-        <p>{this.outputRainbow(preRainbow)}</p>
+        <p>{this.outputRainbow(lessRainbow)}</p>
         <hr />
-        <h2> Darker Hues </h2>
+        <h2> More Huey </h2>
         <section className="container">
-          {Object.entries(postRainbow).map(([color, rgb]) => {
+          {Object.entries(moreRainbow).map(([color, rgb]) => {
             return (
               <div
                 key={color}
@@ -113,7 +113,7 @@ class App extends Component {
             );
           })}
         </section>
-        <p>{this.outputRainbow(postRainbow)}</p>
+        <p>{this.outputRainbow(moreRainbow)}</p>
       </Fragment>
     );
   }
