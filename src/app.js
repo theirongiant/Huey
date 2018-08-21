@@ -108,7 +108,12 @@ class App extends Component {
           )}
         </section>
 
-        <footer />
+        <footer>
+          <p>
+            The center line is the basic rainbow colors keyed, the lines before
+            and after have the hue moved by 15 in either direction
+          </p>
+        </footer>
       </Fragment>
     );
   }
