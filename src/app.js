@@ -68,53 +68,34 @@ class App extends Component {
           </div>
           <div />
         </section>
-        <hr />
-
         <h2> Rainbow </h2>
-        <section className="container">
-          {Object.entries(mainRainbow).map(([color, rgb]) => {
-            return (
-              <div
-                key={color}
-                className="color-box"
-                style={{ backgroundColor: `#${rgb}` }}
-              />
-            );
-          })}
-        </section>
+        {this.renderRainbow(mainRainbow)}
         <p>{this.outputRainbow(mainRainbow)}</p>
-        <hr />
 
         <h2> Less Huey </h2>
-
-        <section className="container">
-          {Object.entries(lessRainbow).map(([color, rgb]) => {
-            return (
-              <div
-                key={color}
-                className="color-box"
-                style={{ backgroundColor: `#${rgb}` }}
-              />
-            );
-          })}
-        </section>
-
+        {this.renderRainbow(lessRainbow)}
         <p>{this.outputRainbow(lessRainbow)}</p>
-        <hr />
+
         <h2> More Huey </h2>
-        <section className="container">
-          {Object.entries(moreRainbow).map(([color, rgb]) => {
-            return (
-              <div
-                key={color}
-                className="color-box"
-                style={{ backgroundColor: `#${rgb}` }}
-              />
-            );
-          })}
-        </section>
+        {this.renderRainbow(moreRainbow)}
         <p>{this.outputRainbow(moreRainbow)}</p>
       </Fragment>
+    );
+  }
+
+  renderRainbow(rainbow) {
+    return (
+      <section className="container">
+        {Object.entries(rainbow).map(([color, rgb]) => {
+          return (
+            <div
+              key={color}
+              className="color-box"
+              style={{ backgroundColor: `#${rgb}` }}
+            />
+          );
+        })}
+      </section>
     );
   }
 
