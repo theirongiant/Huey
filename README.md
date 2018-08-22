@@ -6,7 +6,7 @@ While there exists a number of great tools for generating palettes for website t
 
 ## Demo
 
-[Huey Demo](https://theirongiant.github.io/Huey)
+[Huey Demo](https://huey.theirongiant.io)
 
 ## Sandbox
 [Huey Sandbox](https://codesandbox.io/s/4wnkw179m7)
