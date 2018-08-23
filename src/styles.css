@@ -2,6 +2,7 @@ body {
   background-color: dimgrey;
   color: whitesmoke;
   font-family: Verdana;
+  text-shadow: 7px 7px 20px rgba(0, 0, 0, 0.2);
 }
 
 .App {
@@ -38,4 +39,10 @@ header {
 h2,
 p {
   text-align: center;
+}
+
+.color-box {
+  -webkit-box-shadow: 10px 10px 20px 4px rgba(82, 82, 82, 0.19);
+  -moz-box-shadow: 10px 10px 20px 4px rgba(82, 82, 82, 0.19);
+  box-shadow: 10px 10px 20px 4px rgba(82, 82, 82, 0.19);
 }
