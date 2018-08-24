@@ -16,6 +16,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "deploy": "aws s3 cp --recursive ./build s3://huey.theirongiant.io",
     "eject": "react-scripts eject"
   }
 }
