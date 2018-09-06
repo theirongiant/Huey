@@ -1,3 +1,7 @@
+/**
+ * @prettier
+ */
+
 import React, { Component, Fragment } from "react";
 import convert from "color-convert";
 import randomcolor from "randomcolor";
@@ -37,10 +41,7 @@ class App extends Component {
       <Fragment>
         <header>
           <h1>Huey</h1>
-          <p>
-            Enter a colour and get a range of hues with the same saturation and
-            lightness
-          </p>
+          <p>Enter a colour and get a range of hues with the same saturation and lightness</p>
         </header>
 
         <section>
@@ -87,13 +88,7 @@ class App extends Component {
     return (
       <section className="container">
         {Object.entries(rainbow).map(([color, rgb]) => {
-          return (
-            <div
-              key={color}
-              className="color-box"
-              style={{ backgroundColor: `#${rgb}` }}
-            />
-          );
+          return <div key={color} className="color-box" style={{ backgroundColor: `#${rgb}` }} />;
         })}
       </section>
     );
@@ -116,20 +111,8 @@ class App extends Component {
   }
 
   generateRainbow(base, distance = 0) {
-    return [
-      "red",
-      "orange",
-      "yellow",
-      "green",
-      "blue",
-      "indigo",
-      "violet"
-    ].reduce((obj, color) => {
-      obj[color] = convert.hsl.hex(
-        hueTable[color] + distance,
-        base[1],
-        base[2]
-      );
+    return ["red", "orange", "yellow", "green", "blue", "indigo", "violet"].reduce((obj, color) => {
+      obj[color] = convert.hsl.hex(hueTable[color] + distance, base[1], base[2]);
       return obj;
     }, {});
   }
