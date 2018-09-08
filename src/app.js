@@ -1,20 +1,18 @@
-/**
- * @prettier
- */
+/** @format */
 
-import React, { Component, Fragment } from "react";
-import convert from "color-convert";
-import randomcolor from "randomcolor";
+import React, { Component, Fragment } from 'react';
+import convert from 'color-convert';
+import randomcolor from 'randomcolor';
 
 const rgbSimple = /^#?[0-9,a-f,A-F]{3}|[0-9,a-f,A-F]{6}$/;
 const hueTable = {
-  red: convert.keyword.hsl("red")[0],
-  orange: convert.keyword.hsl("orange")[0],
-  yellow: convert.keyword.hsl("yellow")[0],
-  green: convert.keyword.hsl("green")[0],
-  blue: convert.keyword.hsl("blue")[0],
-  indigo: convert.keyword.hsl("indigo")[0],
-  violet: convert.keyword.hsl("violet")[0]
+  red: convert.keyword.hsl('red')[0],
+  orange: convert.keyword.hsl('orange')[0],
+  yellow: convert.keyword.hsl('yellow')[0],
+  green: convert.keyword.hsl('green')[0],
+  blue: convert.keyword.hsl('blue')[0],
+  indigo: convert.keyword.hsl('indigo')[0],
+  violet: convert.keyword.hsl('violet')[0]
 };
 const startColor = randomcolor();
 
@@ -23,8 +21,8 @@ class App extends Component {
     super();
 
     this.state = {
-      lastGood: startColor.replace("#", ""),
-      lastGoodHSL: convert.hex.hsl(startColor.replace("#", "")),
+      lastGood: startColor.replace('#', ''),
+      lastGoodHSL: convert.hex.hsl(startColor.replace('#', '')),
       baseColor: startColor,
       validColor: true
     };
@@ -49,8 +47,8 @@ class App extends Component {
             <div
               className="color-box"
               style={{
-                backgroundColor: "#" + this.state.lastGood,
-                margin: "5px auto"
+                backgroundColor: '#' + this.state.lastGood,
+                margin: '5px auto'
               }}
             />
             <input
@@ -96,7 +94,7 @@ class App extends Component {
 
   handleBaseColor(value) {
     if (rgbSimple.test(value)) {
-      const good = value.replace("#", "");
+      const good = value.replace('#', '');
       const hsl = convert.hex.hsl(good);
       this.setState({
         lastGood: good,
@@ -111,7 +109,7 @@ class App extends Component {
   }
 
   generateRainbow(base, distance = 0) {
-    return ["red", "orange", "yellow", "green", "blue", "indigo", "violet"].reduce((obj, color) => {
+    return ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'].reduce((obj, color) => {
       obj[color] = convert.hsl.hex(hueTable[color] + distance, base[1], base[2]);
       return obj;
     }, {});
@@ -120,7 +118,7 @@ class App extends Component {
   outputRainbow(rainbow) {
     return `[${Object.values(rainbow)
       .map(rgb => `'#${rgb}'`)
-      .join(", ")}]`;
+      .join(', ')}]`;
   }
 }
 
